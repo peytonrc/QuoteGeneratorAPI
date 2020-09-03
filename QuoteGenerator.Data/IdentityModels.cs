@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using QuoteGenerator.Data;
 
 namespace QuoteGeneratorAPI.Data
 {
@@ -34,6 +35,7 @@ namespace QuoteGeneratorAPI.Data
         }
 
         public DbSet<Quote> Quotes { get; set; }
+        public DbSet<Author> Authors { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
