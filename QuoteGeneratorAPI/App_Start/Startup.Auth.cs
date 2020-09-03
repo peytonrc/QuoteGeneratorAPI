@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using QuoteGeneratorAPI.Providers;
 using QuoteGeneratorAPI.Models;
+using QuoteGeneratorAPI.Data;
 
 namespace QuoteGeneratorAPI
 {
