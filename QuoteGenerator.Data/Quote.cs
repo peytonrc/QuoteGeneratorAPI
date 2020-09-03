@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Dynamic;
 using System.Linq;
 using System.Net.Mime;
@@ -15,7 +16,9 @@ namespace QuoteGenerator.Data
         public int QuoteId { get; set; }
 
         [Required]
+        [ForeignKey(nameof(Author))]
         public int AuthorId { get; set; }
+        public virtual Author Author { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
