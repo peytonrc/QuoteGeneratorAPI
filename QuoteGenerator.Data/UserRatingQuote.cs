@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace QuoteGenerator.Data
+{
+    public class UserRatingQuote
+    {
+        [Key]
+        public int UserRatingQuoteId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(Quote))]
+        public int QuoteId { get; set; }
+        public virtual Quote Quote { get; set; }
+
+        [Required]
+        public Guid UserId { get; set; } // Add foreign key
+
+        public double Rating { get; set; }
+
+    }
+}
