@@ -16,7 +16,7 @@ namespace QuoteGenerator.Data
         public string Name { get; set; }
 
         [Required]
-        public DateTime Birthdate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         [Required]
         public ICollection<Quote> AuthorQuotes { get; set; }
