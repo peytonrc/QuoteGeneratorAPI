@@ -13,7 +13,7 @@ namespace QuoteGenerator.Data
         public int AuthorId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string AuthorName { get; set; }
 
         [Required]
         public DateTime Birthdate { get; set; }
