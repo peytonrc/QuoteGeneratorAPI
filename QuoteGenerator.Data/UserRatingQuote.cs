@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuoteGeneratorAPI.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,9 +20,9 @@ namespace QuoteGenerator.Data
         public virtual Quote Quote { get; set; }
 
         [Required]
-        public Guid UserId { get; set; } // Add foreign key
-
-        public double Rating { get; set; }
+        [ForeignKey(nameof(QuoteUser))]
+        public double Rating { get; set; } 
+        public virtual QuoteUser QuoteUser { get; set; }
 
     }
 }

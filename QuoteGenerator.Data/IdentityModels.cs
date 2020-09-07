@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -20,6 +23,7 @@ namespace QuoteGeneratorAPI.Data
             // Add custom user claims here
             return userIdentity;
         }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -36,6 +40,9 @@ namespace QuoteGeneratorAPI.Data
 
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
+
+        //public virtual ICollection<UserRatingQuote> Rating{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
