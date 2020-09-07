@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QuoteGenerator.Data\QuoteGenerator.Data.csproj">
+      <Project>{97741017-66e5-42f0-a695-66ce03714309}</Project>
+      <Name>QuoteGenerator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuoteGenerator.Models\QuoteGenerator.Models.csproj">
+      <Project>{876bb756-8d00-4a1b-859b-a87ddaad57a6}</Project>
+      <Name>QuoteGenerator.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
