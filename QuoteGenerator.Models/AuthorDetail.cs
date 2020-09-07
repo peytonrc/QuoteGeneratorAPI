@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuoteGenerator.Models
 {
-    public class AuthorListItem
+    public class AuthorDetail
     {
         public int AuthorId { get; set; }
 
@@ -16,6 +16,5 @@ namespace QuoteGenerator.Models
         [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
         public bool IsUserOwned { get; set; }
-
     }
 }

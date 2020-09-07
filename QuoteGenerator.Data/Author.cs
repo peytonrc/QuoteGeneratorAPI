@@ -13,12 +13,14 @@ namespace QuoteGenerator.Data
         public int AuthorId { get; set; }
 
         [Required]
+        public Guid CreatorId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
         public DateTime BirthDate { get; set; }
-
-        [Required]
-        public ICollection<Quote> AuthorQuotes { get; set; }
+        
+        // public ICollection<Quote> AuthorQuotes { get; set; }
     }
 }

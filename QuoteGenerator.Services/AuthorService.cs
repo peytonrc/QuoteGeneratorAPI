@@ -11,40 +11,38 @@ namespace QuoteGenerator.Services
 {
     public class AuthorService
     {
+        private readonly Guid _userId;
 
-        private readonly string _authorName;
-        public AuthorService(string name)
+        public AuthorService(Guid userId)
         {
-            _authorName = name;
+            _userId = userId;
         }
 
-        public IEnumerable<AuthorListItem> GetAuthorQuotes()
+        public IEnumerable<AuthorListItem> GetAuthors()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var authorQuery =
                     ctx
-                        .Quotes
-                        .Where(e => e.Author.Name == _authorName)
-                        .Select(
-                            e => new AuthorListItem
-                            {
-                                AuthorId = e.AuthorId,
-                                Name = e.Author.Name,
-                                BirthDate = e.Author.BirthDate
-                            });
+                        .Authors
+                        .Select(e => new AuthorListItem
+                        {
+                            AuthorId = e.AuthorId,
+                            Name = e.Name,
+                            IsUserOwned = e.CreatorId == _userId
+                        });
 
                 return authorQuery.ToArray();
             }
         }
         public bool CreateAuthor(AuthorCreate model)
         {
-            var entity =
-                new Author()
-                {
-                    Name = model.Name,
-                    BirthDate = model.BirthDate
-                };
+            var entity = new Author
+            {
+                Name = model.Name,
+                BirthDate = model.BirthDate,
+                CreatorId = _userId
+            };
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -53,14 +51,47 @@ namespace QuoteGenerator.Services
             }
         }
 
-        public bool DeleteAuthor(string authorName)
+        public AuthorDetail GetAuthorById(int authorId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Authors.SingleOrDefault(e => e.AuthorId == authorId);
+
+                return
+                    new AuthorDetail
+                    {
+                        AuthorId = entity.AuthorId,
+                        Name = entity.Name,
+                        IsUserOwned = entity.CreatorId == _userId
+                    };
+            }
+        }
+
+
+        public bool UpdateAuthor(AuthorEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Authors
-                        .SingleOrDefault(e => e.Name == authorName);
+                        .SingleOrDefault(e => e.AuthorId == model.AuthorId && e.CreatorId == _userId);
+
+                entity.AuthorId = model.AuthorId;
+                entity.Name = model.Name;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteAuthor(int authorId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Authors
+                        .SingleOrDefault(e => e.AuthorId == authorId && e.CreatorId == _userId);
 
                 ctx.Authors.Remove(entity);
 
