@@ -209,6 +209,7 @@
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -312,6 +313,10 @@
     <ProjectReference Include="..\QuoteGenerator.Data\QuoteGenerator.Data.csproj">
       <Project>{97741017-66e5-42f0-a695-66ce03714309}</Project>
       <Name>QuoteGenerator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuoteGenerator.Models\QuoteGenerator.Models.csproj">
+      <Project>{876BB756-8D00-4A1B-859B-A87DDAAD57A6}</Project>
+      <Name>QuoteGenerator.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuoteGenerator.Services\QuoteGenerator.Services.csproj">
       <Project>{4ea170a0-d5f4-4cbb-8757-b91afa7cfa56}</Project>
