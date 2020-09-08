@@ -91,6 +91,14 @@
     <Compile Include="Migrations\202009041650592_initialmigration.Designer.cs">
       <DependentUpon>202009041650592_initialmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009071710194_firstmigration.cs" />
+    <Compile Include="Migrations\202009071710194_firstmigration.Designer.cs">
+      <DependentUpon>202009071710194_firstmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009072021521_catcrud.cs" />
+    <Compile Include="Migrations\202009072021521_catcrud.Designer.cs">
+      <DependentUpon>202009072021521_catcrud.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Quote.cs" />
@@ -104,6 +112,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009041650592_initialmigration.resx">
       <DependentUpon>202009041650592_initialmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009071710194_firstmigration.resx">
+      <DependentUpon>202009071710194_firstmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009072021521_catcrud.resx">
+      <DependentUpon>202009072021521_catcrud.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

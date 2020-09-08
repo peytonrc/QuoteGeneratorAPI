@@ -5,22 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuoteGenerator.Data
+namespace QuoteGenerator.Models
 {
-    public class Author
+    public class AuthorDetail
     {
-        [Key]
         public int AuthorId { get; set; }
 
-        [Required]
-        public Guid CreatorId { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
-        [Required]
+        [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
-        
-        // public ICollection<Quote> AuthorQuotes { get; set; }
+        public bool IsUserOwned { get; set; }
     }
 }

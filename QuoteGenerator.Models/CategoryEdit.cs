@@ -5,20 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuoteGenerator.Data
+namespace QuoteGenerator.Models
 {
-    public class Category
+    public class CategoryEdit
     {
-        [Key]
+        [Required]
         public int CategoryId { get; set; }
-        
-        [Required]
-        public string Name { get; set; }
-        
-        [Required]
-        public Guid CreatorId { get; set; }
-        
-        public ICollection<Quote> QuoteFromCategory { get; set; }
 
+        [Required]
+        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
+        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        public string Name { get; set; }
     }
 }
