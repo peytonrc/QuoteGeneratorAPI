@@ -36,7 +36,5 @@ namespace QuoteGenerator.Data
         
         public DateTime DateSpoken { get; set; }
         
-
-        public double Rating { get; set; } // Add foreign key
     }
 }
