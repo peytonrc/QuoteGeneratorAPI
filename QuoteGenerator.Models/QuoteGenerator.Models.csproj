@@ -67,6 +67,10 @@
     <Compile Include="QuoteModels\QuoteDetail.cs" />
     <Compile Include="QuoteModels\QuoteEdit.cs" />
     <Compile Include="QuoteModels\QuoteListItem.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteCreate.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteDetail.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteEdit.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
