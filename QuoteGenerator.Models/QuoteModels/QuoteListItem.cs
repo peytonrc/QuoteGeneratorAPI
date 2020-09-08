@@ -29,7 +29,6 @@ namespace QuoteGenerator.Models.QuoteModels
 
         [Display(Name = "Date Spoken YYYY/MM/DD")]
         public DateTime DateSpoken { get; set; }
-
-        //public double Rating { get; set; } // Add foreign key
+  
     }
 }

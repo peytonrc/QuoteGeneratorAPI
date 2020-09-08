@@ -24,6 +24,8 @@ namespace QuoteGeneratorAPI.Data
             return userIdentity;
         }
 
+        public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -42,9 +44,7 @@ namespace QuoteGeneratorAPI.Data
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
-
-        //public virtual ICollection<UserRatingQuote> Rating{ get; set; }
+        public DbSet<UserRatingQuote> UserRatingQuotes { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
