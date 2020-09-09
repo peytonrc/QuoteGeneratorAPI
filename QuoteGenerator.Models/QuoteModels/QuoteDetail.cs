@@ -16,7 +16,7 @@ namespace QuoteGenerator.Models.QuoteModels
         [Display(Name = "Quote")]
         public string Content { get; set; }
 
-       
+
         public int AuthorId { get; set; }
         [Display(Name = "Author")]
         public string AuthorName { get; set; }
@@ -30,6 +30,6 @@ namespace QuoteGenerator.Models.QuoteModels
         [Display(Name = "Date Spoken YYYY/MM/DD")]
         public DateTime DateSpoken { get; set; }
 
-        //public double Rating { get; set; } // Add foreign key
+        public double AverageRating { get; set; }
     }
 }
