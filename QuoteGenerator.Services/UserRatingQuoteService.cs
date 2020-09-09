@@ -71,17 +71,7 @@ namespace QuoteGenerator.Services
                     };
             }
         }
-        public double AverageRating(List<UserRatingQuote> list)
-        {
-            double avgRating = 0;
-            foreach (var rating in list)
-            {
-                avgRating += rating.UserRating;
-            }
-            return (list.Count > 0) ? Math.Round(avgRating / list.Count, 2) : 0;
-        }
-
-
+       
         public bool UpdateUserRatingQuote(UserRatingQuoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())
