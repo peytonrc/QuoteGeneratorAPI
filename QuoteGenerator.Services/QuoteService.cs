@@ -3,6 +3,7 @@ using QuoteGenerator.Models.QuoteModels;
 using QuoteGeneratorAPI.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,8 +33,8 @@ namespace QuoteGenerator.Services
                             AuthorId = e.AuthorId,
                             AuthorName = e.Author.Name,
                             CategoryId = e.CategoryId,
-                            CategoryName=e.Category.Name,
-                            DateSpoken= e.DateSpoken
+                            CategoryName = e.Category.Name,
+                            DateSpoken = e.DateSpoken
                         });
 
                 return quoteQuery.ToArray();
@@ -71,11 +72,22 @@ namespace QuoteGenerator.Services
                         AuthorName = entity.Author.Name,
                         CategoryId = entity.CategoryId,
                         CategoryName = entity.Category.Name,
-                        DateSpoken = entity.DateSpoken
+                        DateSpoken = entity.DateSpoken,
+                        AverageRating = AverageRating(entity.UserRatingQuotes)
+                        //Call a method that takes in a list of UserRatingQuotes, averages the rating and returns that averaged rating
                     };
             }
         }
 
+        public double AverageRating(List<UserRatingQuote> list)
+        {
+            double avgRating = 0;
+            foreach (var rating in list)
+            {
+                avgRating += rating.UserRating;
+            }
+            return (list.Count > 0) ? Math.Round(avgRating / list.Count, 2) : 0;
+        }
 
         public bool UpdateQuote(QuoteEdit model)
         {
