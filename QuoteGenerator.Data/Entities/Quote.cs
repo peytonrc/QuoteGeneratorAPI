@@ -35,8 +35,7 @@ namespace QuoteGenerator.Data
         public string Content { get; set; }
         
         public DateTime DateSpoken { get; set; }
+        public virtual List<UserRatingQuote> UserRatingQuotes { get; set; }
         
-
-        public double Rating { get; set; } // Add foreign key
     }
 }

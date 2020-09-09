@@ -55,7 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorService.cs" />
+    <Compile Include="CategoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteService.cs" />
+    <Compile Include="UserRatingQuoteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,7 +70,7 @@
       <Name>QuoteGenerator.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuoteGenerator.Models\QuoteGenerator.Models.csproj">
-      <Project>{876bb756-8d00-4a1b-859b-a87ddaad57a6}</Project>
+      <Project>{876BB756-8D00-4A1B-859B-A87DDAAD57A6}</Project>
       <Name>QuoteGenerator.Models</Name>
     </ProjectReference>
   </ItemGroup>

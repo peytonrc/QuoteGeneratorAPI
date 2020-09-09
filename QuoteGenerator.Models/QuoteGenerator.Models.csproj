@@ -54,11 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorCreate.cs" />
-    <Compile Include="AuthorDetail.cs" />
-    <Compile Include="AuthorEdit.cs" />
-    <Compile Include="AuthorListItem.cs" />
+    <Compile Include="AuthorModels\AuthorCreate.cs" />
+    <Compile Include="AuthorModels\AuthorDetail.cs" />
+    <Compile Include="AuthorModels\AuthorEdit.cs" />
+    <Compile Include="AuthorModels\AuthorListItem.cs" />
+    <Compile Include="CategoryModels\CategoryCreate.cs" />
+    <Compile Include="CategoryModels\CategoryDetail.cs" />
+    <Compile Include="CategoryModels\CategoryEdit.cs" />
+    <Compile Include="CategoryModels\CategoryListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteModels\QuoteCreate.cs" />
+    <Compile Include="QuoteModels\QuoteDetail.cs" />
+    <Compile Include="QuoteModels\QuoteEdit.cs" />
+    <Compile Include="QuoteModels\QuoteListItem.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteCreate.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteDetail.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteEdit.cs" />
+    <Compile Include="UserRatingQuoteModels\UserRatingQuoteListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,5 +82,6 @@
       <Name>QuoteGenerator.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
