@@ -3,7 +3,7 @@ namespace QuoteGenerator.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UserRatingQuote : DbMigration
+    public partial class update : DbMigration
     {
         public override void Up()
         {

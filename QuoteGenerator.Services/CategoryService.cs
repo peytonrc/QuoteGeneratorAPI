@@ -28,7 +28,7 @@ namespace QuoteGenerator.Services
                         {
                             CategoryId = e.CategoryId,
                             Name = e.Name,
-                            IsUserOwned = e.CreatorId == _userId
+                           
                         });
 
                 return categoryQuery.ToArray();
@@ -40,7 +40,7 @@ namespace QuoteGenerator.Services
             var entity = new Category
             {
                 Name = model.Name,
-                CreatorId = _userId
+               
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -61,7 +61,7 @@ namespace QuoteGenerator.Services
                     {
                         CategoryId = entity.CategoryId,
                         Name = entity.Name,
-                        IsUserOwned = entity.CreatorId == _userId
+                        
                     };
             }
         }
@@ -73,7 +73,7 @@ namespace QuoteGenerator.Services
                 var entity =
                     ctx
                         .Categories
-                        .SingleOrDefault(e => e.CategoryId == model.CategoryId && e.CreatorId == _userId);
+                        .SingleOrDefault(e => e.CategoryId == model.CategoryId);
 
                 entity.CategoryId = model.CategoryId;
                 entity.Name = model.Name;
@@ -89,7 +89,7 @@ namespace QuoteGenerator.Services
                 var entity =
                     ctx
                         .Categories
-                        .SingleOrDefault(e => e.CategoryId == categoryId && e.CreatorId == _userId);
+                        .SingleOrDefault(e => e.CategoryId == categoryId);
 
                 ctx.Categories.Remove(entity);
 

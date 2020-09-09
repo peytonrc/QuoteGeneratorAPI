@@ -74,7 +74,6 @@ namespace QuoteGenerator.Services
                         CategoryName = entity.Category.Name,
                         DateSpoken = entity.DateSpoken,
                         AverageRating = AverageRating(entity.UserRatingQuotes)
-                        
                     };
             }
         }

@@ -15,7 +15,7 @@ namespace QuoteGenerator.Models
 
         [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
-        public bool IsUserOwned { get; set; }
+        
 
     }
 }
