@@ -67,8 +67,18 @@ namespace QuoteGenerator.Services
                         UserId = entity.UserId,
                         UserRating = entity.UserRating
 
+
                     };
             }
+        }
+        public double AverageRating(List<UserRatingQuote> list)
+        {
+            double avgRating = 0;
+            foreach (var rating in list)
+            {
+                avgRating += rating.UserRating;
+            }
+            return (list.Count > 0) ? Math.Round(avgRating / list.Count, 2) : 0;
         }
 
 

@@ -29,6 +29,8 @@ namespace QuoteGenerator.Models.QuoteModels
 
         [Display(Name = "Date Spoken YYYY/MM/DD")]
         public DateTime DateSpoken { get; set; }
+
+        // Average Rating?
   
     }
 }
