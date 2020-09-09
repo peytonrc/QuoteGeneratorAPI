@@ -40,7 +40,6 @@ namespace QuoteGeneratorAPI.Data
             return new ApplicationDbContext();
         }
 
-        
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
