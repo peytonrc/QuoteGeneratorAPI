@@ -7,13 +7,13 @@ namespace QuoteGenerator.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UserRatingQuote : IMigrationMetadata
+    public sealed partial class update : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UserRatingQuote));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009081919228_UserRatingQuote"; }
+            get { return "202009091910345_update"; }
         }
         
         string IMigrationMetadata.Source
