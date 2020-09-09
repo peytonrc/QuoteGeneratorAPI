@@ -29,7 +29,8 @@ namespace QuoteGenerator.Services
                         {
                             AuthorId = e.AuthorId,
                             Name = e.Name,
-                            IsUserOwned = e.CreatorId == _userId
+                            BirthDate = e.BirthDate
+                           
                         });
 
                 return authorQuery.ToArray();
@@ -41,7 +42,7 @@ namespace QuoteGenerator.Services
             {
                 Name = model.Name,
                 BirthDate = model.BirthDate,
-                CreatorId = _userId
+               
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -50,6 +51,8 @@ namespace QuoteGenerator.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
 
         public AuthorDetail GetAuthorById(int authorId)
         {
@@ -62,7 +65,7 @@ namespace QuoteGenerator.Services
                     {
                         AuthorId = entity.AuthorId,
                         Name = entity.Name,
-                        IsUserOwned = entity.CreatorId == _userId
+                        
                     };
             }
         }
@@ -75,7 +78,7 @@ namespace QuoteGenerator.Services
                 var entity =
                     ctx
                         .Authors
-                        .SingleOrDefault(e => e.AuthorId == model.AuthorId && e.CreatorId == _userId);
+                        .SingleOrDefault(e => e.AuthorId == model.AuthorId);
 
                 entity.AuthorId = model.AuthorId;
                 entity.Name = model.Name;
@@ -91,7 +94,7 @@ namespace QuoteGenerator.Services
                 var entity =
                     ctx
                         .Authors
-                        .SingleOrDefault(e => e.AuthorId == authorId && e.CreatorId == _userId);
+                        .SingleOrDefault(e => e.AuthorId == authorId);
 
                 ctx.Authors.Remove(entity);
 
