@@ -54,7 +54,7 @@ namespace QuoteGeneratorAPI.Controllers
             var service = CreateUserRatingQuoteService();
             if (!service.DeleteUserRatingQuote(id))
                 return InternalServerError();
-            return Ok();
+            return Ok("The rating was deleted");
         }
     }
 }
