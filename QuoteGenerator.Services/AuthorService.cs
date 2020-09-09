@@ -65,6 +65,7 @@ namespace QuoteGenerator.Services
                     {
                         AuthorId = entity.AuthorId,
                         Name = entity.Name,
+                        BirthDate = entity.BirthDate
                         
                     };
             }
