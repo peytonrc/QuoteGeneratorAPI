@@ -56,32 +56,7 @@ namespace QuoteGenerator.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-        public QuoteDetail GetRandomQuote()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var random = new Random();
-
-                int quoteId = random.Next(ctx.Quotes.Count());
-
-                var entity = ctx.Quotes.ToList()[quoteId];
-
-                return
-                    new QuoteDetail
-                    {
-                        QuoteId = entity.QuoteId,
-                        Content = entity.Content,
-                        AuthorId = entity.AuthorId,
-                        AuthorName = entity.Author.Name,
-                        CategoryId = entity.CategoryId,
-                        CategoryName = entity.Category.Name,
-                        DateSpoken = entity.DateSpoken,
-                        AverageRating = AverageRating(entity.UserRatingQuotes)
-                    };
-            }
-        }
-
+               
         public QuoteDetail GetQuoteById(int quoteId)
         {
             using (var ctx = new ApplicationDbContext())
