@@ -78,6 +78,29 @@ namespace QuoteGenerator.Services
             }
         }
 
+        public IEnumerable<QuoteListItem> GetQuotesByAuthorId(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var quoteQuery =
+                    ctx
+                        .Quotes
+                        .Where(e => e.AuthorId == id)
+                        .Select(e => new QuoteListItem
+                        {
+                            QuoteId = e.QuoteId,
+                            Content = e.Content,
+                            AuthorId = e.AuthorId,
+                            AuthorName = e.Author.Name,
+                            CategoryId = e.CategoryId,
+                            CategoryName = e.Category.Name,
+                            DateSpoken = e.DateSpoken
+                        });
+
+                return quoteQuery.ToArray();
+            }
+        }
+
         public double AverageRating(List<UserRatingQuote> list)
         {
             double avgRating = 0;

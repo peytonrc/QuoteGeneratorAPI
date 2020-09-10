@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace QuoteGeneratorAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Quote")]
     public class QuoteController : ApiController
     {
         private QuoteService CreateQuoteService() => new QuoteService(Guid.Parse(User.Identity.GetUserId()));
@@ -26,7 +27,15 @@ namespace QuoteGeneratorAPI.Controllers
             var quotes = service.GetQuoteById(id);
             return Ok(quotes);
         }
-      
+
+        [HttpGet]
+        [Route("ByAuthor/{id}")]
+        public IHttpActionResult GetByAuthorId(int id)
+        {
+            var service = CreateQuoteService();
+            var quotes = service.GetQuotesByAuthorId(id);
+            return Ok(quotes);
+        }
         public IHttpActionResult Post(QuoteCreate quote)
         {
             if (quote == null)
