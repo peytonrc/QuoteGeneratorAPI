@@ -45,6 +45,16 @@ namespace QuoteGeneratorAPI.Controllers
             var quotes = service.GetQuotesByCategoryId(id);
             return Ok(quotes);
         }
+
+        [HttpGet]
+        [Route("ByRandom")]
+        public IHttpActionResult GetByRandom()
+        {
+            var service = CreateQuoteService();
+            var quotes = service.GetRandomQuote();
+            return Ok(quotes);
+        }
+
         public IHttpActionResult Post(QuoteCreate quote)
         {
             if (quote == null)

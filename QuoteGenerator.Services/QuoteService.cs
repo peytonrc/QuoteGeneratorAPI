@@ -78,6 +78,29 @@ namespace QuoteGenerator.Services
             }
         }
 
+        public QuoteDetail GetRandomQuote()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var random = new Random();
+                int quoteId = random.Next(ctx.Quotes.Count());
+                var entity = ctx.Quotes.ToList()[quoteId];
+                return
+                    new QuoteDetail
+                    {
+                        QuoteId = entity.QuoteId,
+                        Content = entity.Content,
+                        AuthorId = entity.AuthorId,
+                        AuthorName = entity.Author.Name,
+                        CategoryId = entity.CategoryId,
+                        CategoryName = entity.Category.Name,
+                        DateSpoken = entity.DateSpoken,
+                        AverageRating = AverageRating(entity.UserRatingQuotes)
+                    };
+            }
+        }
+
+
         public IEnumerable<QuoteListItem> GetQuotesByAuthorId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -133,6 +156,8 @@ namespace QuoteGenerator.Services
             }
             return (list.Count > 0) ? Math.Round(avgRating / list.Count, 2) : 0;
         }
+
+       
 
         public bool UpdateQuote(QuoteEdit model)
         {
