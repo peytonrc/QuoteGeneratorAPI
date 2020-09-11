@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -59,12 +60,22 @@ namespace QuoteGeneratorAPI.Controllers
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
-            return new UserInfoViewModel
+            var userId = User.Identity.GetUserId();
+            using (var ctx = new ApplicationDbContext())
             {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+
+                var user = ctx.Users.Single(u => u.Id == userId);
+                {
+                    return new UserInfoViewModel()
+                    {
+                        YourName = user.YourName,
+                        Email = user.Email,
+                        HasRegistered = externalLogin == null,
+                        LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+
+                    };
+                }
+            }
         }
 
         // POST api/Account/Logout
@@ -329,7 +340,7 @@ namespace QuoteGeneratorAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
