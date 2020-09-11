@@ -39,6 +39,9 @@ namespace QuoteGeneratorAPI.Models
         [Display(Name = "Your Name")]
         public string YourName { get; set; }
 
+        [Display(Name = "Favorite Category: 0) Motivational 1) Humor 2) Intellectual 3) Love")]
+        public CategoryType FavoriteCategory { get; set; }
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
