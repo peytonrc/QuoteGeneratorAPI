@@ -107,6 +107,18 @@
     <Compile Include="Migrations\202009091910345_update.Designer.cs">
       <DependentUpon>202009091910345_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009111525202_AddedEnum.cs" />
+    <Compile Include="Migrations\202009111525202_AddedEnum.Designer.cs">
+      <DependentUpon>202009111525202_AddedEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009111541240_AddedNameProp.cs" />
+    <Compile Include="Migrations\202009111541240_AddedNameProp.Designer.cs">
+      <DependentUpon>202009111541240_AddedNameProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009111805466_AddedYourName.cs" />
+    <Compile Include="Migrations\202009111805466_AddedYourName.Designer.cs">
+      <DependentUpon>202009111805466_AddedYourName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Quote.cs" />
@@ -131,6 +143,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009091910345_update.resx">
       <DependentUpon>202009091910345_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111525202_AddedEnum.resx">
+      <DependentUpon>202009111525202_AddedEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111541240_AddedNameProp.resx">
+      <DependentUpon>202009111541240_AddedNameProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009111805466_AddedYourName.resx">
+      <DependentUpon>202009111805466_AddedYourName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

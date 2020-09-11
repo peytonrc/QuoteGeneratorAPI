@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using QuoteGenerator.Data;
+using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGeneratorAPI.Data
 {
@@ -24,7 +26,10 @@ namespace QuoteGeneratorAPI.Data
             return userIdentity;
         }
 
-        public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
+        //public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
+
+
+        public string YourName { get; set; }
 
     }
 
@@ -44,6 +49,7 @@ namespace QuoteGeneratorAPI.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserRatingQuote> UserRatingQuotes { get; set; }
+        
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
