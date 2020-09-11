@@ -56,7 +56,7 @@ namespace QuoteGenerator.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
+               
         public QuoteDetail GetQuoteById(int quoteId)
         {
             using (var ctx = new ApplicationDbContext())

@@ -87,37 +87,9 @@
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202009041650592_initialmigration.cs" />
-    <Compile Include="Migrations\202009041650592_initialmigration.Designer.cs">
-      <DependentUpon>202009041650592_initialmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009071710194_firstmigration.cs" />
-    <Compile Include="Migrations\202009071710194_firstmigration.Designer.cs">
-      <DependentUpon>202009071710194_firstmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009072021521_catcrud.cs" />
-    <Compile Include="Migrations\202009072021521_catcrud.Designer.cs">
-      <DependentUpon>202009072021521_catcrud.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081600526_migration.cs" />
-    <Compile Include="Migrations\202009081600526_migration.Designer.cs">
-      <DependentUpon>202009081600526_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009091910345_update.cs" />
-    <Compile Include="Migrations\202009091910345_update.Designer.cs">
-      <DependentUpon>202009091910345_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009111525202_AddedEnum.cs" />
-    <Compile Include="Migrations\202009111525202_AddedEnum.Designer.cs">
-      <DependentUpon>202009111525202_AddedEnum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009111541240_AddedNameProp.cs" />
-    <Compile Include="Migrations\202009111541240_AddedNameProp.Designer.cs">
-      <DependentUpon>202009111541240_AddedNameProp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009111805466_AddedYourName.cs" />
-    <Compile Include="Migrations\202009111805466_AddedYourName.Designer.cs">
-      <DependentUpon>202009111805466_AddedYourName.cs</DependentUpon>
+    <Compile Include="Migrations\202009112033320_Initial.cs" />
+    <Compile Include="Migrations\202009112033320_Initial.Designer.cs">
+      <DependentUpon>202009112033320_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,29 +101,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009041650592_initialmigration.resx">
-      <DependentUpon>202009041650592_initialmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009071710194_firstmigration.resx">
-      <DependentUpon>202009071710194_firstmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009072021521_catcrud.resx">
-      <DependentUpon>202009072021521_catcrud.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081600526_migration.resx">
-      <DependentUpon>202009081600526_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009091910345_update.resx">
-      <DependentUpon>202009091910345_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009111525202_AddedEnum.resx">
-      <DependentUpon>202009111525202_AddedEnum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009111541240_AddedNameProp.resx">
-      <DependentUpon>202009111541240_AddedNameProp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009111805466_AddedYourName.resx">
-      <DependentUpon>202009111805466_AddedYourName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009112033320_Initial.resx">
+      <DependentUpon>202009112033320_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

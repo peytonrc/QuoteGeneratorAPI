@@ -31,6 +31,8 @@ namespace QuoteGeneratorAPI.Models
     {
         public string YourName { get; set; }
 
+        public CategoryType FavoriteCategory { get; set; }
+
         public string Email { get; set; }
 
         public bool HasRegistered { get; set; }

@@ -30,6 +30,15 @@ namespace QuoteGeneratorAPI.Data
 
 
         public string YourName { get; set; }
+        public enum CategoryType
+        {
+            Motivational,
+            Humor,
+            Intellectual, 
+            Love
+        }
+        public CategoryType FavoriteCategoroy { get; set; }
+            
 
     }
 

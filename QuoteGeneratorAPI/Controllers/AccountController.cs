@@ -69,6 +69,7 @@ namespace QuoteGeneratorAPI.Controllers
                     return new UserInfoViewModel()
                     {
                         YourName = user.YourName,
+                        FavoriteCategory = user.FavoriteCategoroy,
                         Email = user.Email,
                         HasRegistered = externalLogin == null,
                         LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
@@ -340,7 +341,7 @@ namespace QuoteGeneratorAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName, FavoriteCategoroy = model.FavoriteCategory };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
