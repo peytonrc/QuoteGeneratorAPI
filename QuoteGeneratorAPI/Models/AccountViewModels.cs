@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuoteGeneratorAPI.Data;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using static QuoteGeneratorAPI.Data.ApplicationUser;

@@ -1,4 +1,6 @@
 ﻿using QuoteGenerator.Data;
+using QuoteGenerator.Models;
+using QuoteGenerator.Models.QuoteModels;
 using QuoteGenerator.Models.UserRatingQuoteModels;
 using QuoteGeneratorAPI.Data;
 using System;
@@ -18,6 +20,7 @@ namespace QuoteGenerator.Services
             _userId = userId;
         }
 
+        
         public IEnumerable<UserRatingQuoteListItem> GetUserRatingQuotes()
         {
             using (var ctx = new ApplicationDbContext())
@@ -30,7 +33,7 @@ namespace QuoteGenerator.Services
                             UserRatingQuoteId = e.UserRatingQuoteId,
                             QuoteId = e.QuoteId,
                             UserId = e.UserId,
-                            UserRating = e.UserRating
+                            UserRating = e.UserRating,
 
                         });
 
@@ -43,7 +46,7 @@ namespace QuoteGenerator.Services
             {
                 QuoteId = model.QuoteId,
                 UserId = model.UserId,
-                UserRating = model.UserRating
+                UserRating = model.UserRating,
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -71,7 +74,7 @@ namespace QuoteGenerator.Services
                     };
             }
         }
-       
+
         public bool UpdateUserRatingQuote(UserRatingQuoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())

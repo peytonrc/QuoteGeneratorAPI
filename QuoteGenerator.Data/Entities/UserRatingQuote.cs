@@ -25,7 +25,7 @@ namespace QuoteGenerator.Data
         [ForeignKey(nameof(ApplicationUser))]
         public string UserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
-        public double UserRating { get; set; }
 
+        public double UserRating { get; set; }
     }
 }
