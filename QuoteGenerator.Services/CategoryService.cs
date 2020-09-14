@@ -27,7 +27,7 @@ namespace QuoteGenerator.Services
                         .Select(e => new CategoryListItem
                         {
                             CategoryId = e.CategoryId,
-                            Name = e.Name,
+                            Name = e.Name
                            
                         });
 

@@ -66,12 +66,10 @@ namespace QuoteGenerator.Services
                         QuoteId = entity.QuoteId,
                         UserId = entity.UserId,
                         UserRating = entity.UserRating
-
-
                     };
             }
         }
-       
+
         public bool UpdateUserRatingQuote(UserRatingQuoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())

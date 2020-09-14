@@ -15,6 +15,14 @@ using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGeneratorAPI.Data
 {
+    public enum CategoryType
+    {
+        Motivational,
+        Humor,
+        Intellectual,
+        Love
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -28,17 +36,9 @@ namespace QuoteGeneratorAPI.Data
 
         //public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
 
-
         public string YourName { get; set; }
-        public enum CategoryType
-        {
-            Motivational,
-            Humor,
-            Intellectual, 
-            Love
-        }
-        public CategoryType FavoriteCategoroy { get; set; }
-            
+       
+        public CategoryType FavoriteCategory { get; set; }
 
     }
 
