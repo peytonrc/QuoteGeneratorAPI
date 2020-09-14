@@ -10,6 +10,8 @@ using System.Web.Http;
 
 namespace QuoteGeneratorAPI.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/Category")]
     public class CategoryController : ApiController
     {
         private CategoryService CreateCategoryService() => new CategoryService(Guid.Parse(User.Identity.GetUserId()));
@@ -24,6 +26,15 @@ namespace QuoteGeneratorAPI.Controllers
         {
             var service = CreateCategoryService();
             var category = service.GetCategoryById(id);
+            return Ok(category);
+        }
+
+        [HttpGet]
+        [Route("Ratings")]
+        public IHttpActionResult GetNumberOfRatingsForCategory()
+        {
+            var service = CreateCategoryService();
+            var category = service.GetCategoryRatings();
             return Ok(category);
         }
 
