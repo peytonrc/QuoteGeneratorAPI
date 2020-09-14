@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace QuoteGenerator.Models
 {
-    public class AuthorEdit
+    public class img
     {
-        public int AuthorId { get; set; }
-
+        [Key]
+        public int Id { get; set; }
         public string Name { get; set; }
-
-        [Display(Name = "Date of Birth")]
-        public DateTime BirthDate { get; set; }
-       
+        public byte[] Picture { get; set; }
     }
 }

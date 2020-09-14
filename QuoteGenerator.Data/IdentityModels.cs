@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
@@ -10,9 +11,18 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using QuoteGenerator.Data;
+using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGeneratorAPI.Data
 {
+        public enum CategoryType
+        {
+            Motivational,
+            Humor,
+            Intellectual, 
+            Love
+        }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -24,7 +34,12 @@ namespace QuoteGeneratorAPI.Data
             return userIdentity;
         }
 
-        public ICollection<UserRatingQuote> UserRatingQuotes { get; set; }
+        public ICollection<UserRatingQuote> QuotesRatedByUser { get; set; }
+
+
+        public string YourName { get; set; }
+        public CategoryType FavoriteCategoroy { get; set; }
+            
 
     }
 
@@ -44,6 +59,7 @@ namespace QuoteGeneratorAPI.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<UserRatingQuote> UserRatingQuotes { get; set; }
+        
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

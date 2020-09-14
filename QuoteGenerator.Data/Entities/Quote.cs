@@ -36,6 +36,5 @@ namespace QuoteGenerator.Data
         
         public DateTime DateSpoken { get; set; }
         public virtual List<UserRatingQuote> UserRatingQuotes { get; set; }
-        
     }
 }

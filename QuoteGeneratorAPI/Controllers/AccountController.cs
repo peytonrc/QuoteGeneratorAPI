@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -59,12 +60,23 @@ namespace QuoteGeneratorAPI.Controllers
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
-            return new UserInfoViewModel
+            var userId = User.Identity.GetUserId();
+            using (var ctx = new ApplicationDbContext())
             {
-                Email = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+
+                var user = ctx.Users.Single(u => u.Id == userId);
+                {
+                    return new UserInfoViewModel()
+                    {
+                        YourName = user.YourName,
+                        FavoriteCategory = user.FavoriteCategoroy,
+                        Email = user.Email,
+                        HasRegistered = externalLogin == null,
+                        LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+
+                    };
+                }
+            }
         }
 
         // POST api/Account/Logout
@@ -126,7 +138,7 @@ namespace QuoteGeneratorAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +271,9 @@ namespace QuoteGeneratorAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -329,7 +341,7 @@ namespace QuoteGeneratorAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName, FavoriteCategoroy = model.FavoriteCategory };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -369,7 +381,7 @@ namespace QuoteGeneratorAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }

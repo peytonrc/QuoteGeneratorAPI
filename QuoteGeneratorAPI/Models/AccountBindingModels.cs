@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using QuoteGeneratorAPI.Data;
+using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGeneratorAPI.Models
 {
@@ -35,8 +37,11 @@ namespace QuoteGeneratorAPI.Models
     public class RegisterBindingModel
     {
         [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "Your Name")]
+        public string YourName { get; set; }
+
+        [Display(Name = "Favorite Category: 0) Motivational 1) Humor 2) Intellectual 3) Love")]
+        public CategoryType FavoriteCategory { get; set; }
 
         [Required]
         [Display(Name = "Email")]
@@ -52,6 +57,7 @@ namespace QuoteGeneratorAPI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+   
     }
 
     public class RegisterExternalBindingModel

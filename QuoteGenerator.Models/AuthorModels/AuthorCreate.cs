@@ -18,7 +18,7 @@ namespace QuoteGenerator.Models
         [Required]
         [Display(Name = "Date of Birth")]
         public DateTime BirthDate { get; set; }
-        // public ICollection<Quote> AuthorQuotes { get; set; }
+        
 
     }
 }

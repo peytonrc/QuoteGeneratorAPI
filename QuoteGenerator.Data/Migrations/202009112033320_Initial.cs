@@ -3,7 +3,7 @@ namespace QuoteGenerator.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialmigration : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -12,8 +12,9 @@ namespace QuoteGenerator.Data.Migrations
                 c => new
                     {
                         AuthorId = c.Int(nullable: false, identity: true),
+                        CreatorId = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
-                        Birthdate = c.DateTime(nullable: false),
+                        BirthDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.AuthorId);
             
@@ -22,45 +23,50 @@ namespace QuoteGenerator.Data.Migrations
                 c => new
                     {
                         QuoteId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         AuthorId = c.Int(nullable: false),
                         CategoryId = c.Int(nullable: false),
                         Content = c.String(nullable: false),
                         DateSpoken = c.DateTime(nullable: false),
-                        Rating = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.QuoteId)
                 .ForeignKey("dbo.Author", t => t.AuthorId, cascadeDelete: true)
-                .Index(t => t.AuthorId);
+                .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
+                .Index(t => t.AuthorId)
+                .Index(t => t.CategoryId);
             
             CreateTable(
-                "dbo.IdentityRole",
+                "dbo.Category",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(),
+                        CategoryId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        CreatorId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.CategoryId);
             
             CreateTable(
-                "dbo.IdentityUserRole",
+                "dbo.UserRatingQuote",
                 c => new
                     {
+                        UserRatingQuoteId = c.Int(nullable: false, identity: true),
+                        QuoteId = c.Int(nullable: false),
                         UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(),
-                        IdentityRole_Id = c.String(maxLength: 128),
-                        ApplicationUser_Id = c.String(maxLength: 128),
+                        UserRating = c.Double(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.IdentityRole", t => t.IdentityRole_Id)
-                .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
-                .Index(t => t.IdentityRole_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .PrimaryKey(t => t.UserRatingQuoteId)
+                .ForeignKey("dbo.ApplicationUser", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Quote", t => t.QuoteId, cascadeDelete: true)
+                .Index(t => t.QuoteId)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "dbo.ApplicationUser",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        YourName = c.String(),
+                        FavoriteCategoroy = c.Int(nullable: false),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -103,44 +109,56 @@ namespace QuoteGenerator.Data.Migrations
                 .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
-                "dbo.UserRatingQuote",
+                "dbo.IdentityUserRole",
                 c => new
                     {
-                        UserRatingQuoteId = c.Int(nullable: false, identity: true),
-                        QuoteId = c.Int(nullable: false),
-                        Rating = c.Double(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(),
                         ApplicationUser_Id = c.String(maxLength: 128),
+                        IdentityRole_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.UserRatingQuoteId)
-                .ForeignKey("dbo.Quote", t => t.QuoteId, cascadeDelete: true)
+                .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
-                .Index(t => t.QuoteId)
-                .Index(t => t.ApplicationUser_Id);
+                .ForeignKey("dbo.IdentityRole", t => t.IdentityRole_Id)
+                .Index(t => t.ApplicationUser_Id)
+                .Index(t => t.IdentityRole_Id);
+            
+            CreateTable(
+                "dbo.IdentityRole",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UserRatingQuote", "ApplicationUser_Id", "dbo.ApplicationUser");
+            DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.UserRatingQuote", "QuoteId", "dbo.Quote");
+            DropForeignKey("dbo.UserRatingQuote", "UserId", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
-            DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Quote", "CategoryId", "dbo.Category");
             DropForeignKey("dbo.Quote", "AuthorId", "dbo.Author");
-            DropIndex("dbo.UserRatingQuote", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.UserRatingQuote", new[] { "QuoteId" });
+            DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
-            DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.UserRatingQuote", new[] { "UserId" });
+            DropIndex("dbo.UserRatingQuote", new[] { "QuoteId" });
+            DropIndex("dbo.Quote", new[] { "CategoryId" });
             DropIndex("dbo.Quote", new[] { "AuthorId" });
-            DropTable("dbo.UserRatingQuote");
+            DropTable("dbo.IdentityRole");
+            DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
-            DropTable("dbo.IdentityUserRole");
-            DropTable("dbo.IdentityRole");
+            DropTable("dbo.UserRatingQuote");
+            DropTable("dbo.Category");
             DropTable("dbo.Quote");
             DropTable("dbo.Author");
         }

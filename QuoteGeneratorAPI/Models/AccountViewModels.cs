@@ -1,5 +1,8 @@
-﻿using System;
+﻿using QuoteGeneratorAPI.Data;
+using System;
 using System.Collections.Generic;
+using System.Dynamic;
+using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGeneratorAPI.Models
 {
@@ -27,11 +30,16 @@ namespace QuoteGeneratorAPI.Models
 
     public class UserInfoViewModel
     {
+        public string YourName { get; set; }
+
+        public CategoryType FavoriteCategory { get; set; }
+
         public string Email { get; set; }
 
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+
     }
 
     public class UserLoginInfoViewModel
