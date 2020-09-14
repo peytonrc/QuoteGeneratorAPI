@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202009112033320_Initial.Designer.cs">
       <DependentUpon>202009112033320_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.cs" />
+    <Compile Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.Designer.cs">
+      <DependentUpon>202009141830321_AddedAbilityToGetCategoryRatings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Quote.cs" />
@@ -103,6 +107,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009112033320_Initial.resx">
       <DependentUpon>202009112033320_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.resx">
+      <DependentUpon>202009141830321_AddedAbilityToGetCategoryRatings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
