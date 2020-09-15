@@ -3,7 +3,7 @@ namespace QuoteGenerator.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialBuild : DbMigration
     {
         public override void Up()
         {
@@ -41,7 +41,6 @@ namespace QuoteGenerator.Data.Migrations
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
-                        CreatorId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryId);
             

@@ -40,6 +40,7 @@ namespace QuoteGenerator.Services
                 return userRatingQuoteQuery.ToArray();
             }
         }
+
         public bool CreateUserRatingQuote(UserRatingQuoteCreate model)
         {
             var entity = new UserRatingQuote
@@ -69,8 +70,6 @@ namespace QuoteGenerator.Services
                         QuoteId = entity.QuoteId,
                         UserId = entity.UserId,
                         UserRating = entity.UserRating
-
-
                     };
             }
         }

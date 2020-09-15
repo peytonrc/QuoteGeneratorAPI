@@ -38,9 +38,9 @@ namespace QuoteGeneratorAPI.Data
 
 
         public string YourName { get; set; }
-        public CategoryType FavoriteCategoroy { get; set; }
-            
 
+        public CategoryType FavoriteCategory { get; set; }
+            
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

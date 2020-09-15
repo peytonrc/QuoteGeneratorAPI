@@ -7,13 +7,13 @@ namespace QuoteGenerator.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddedAbilityToGetCategoryRatings : IMigrationMetadata
+    public sealed partial class InitialBuild : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedAbilityToGetCategoryRatings));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialBuild));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009141830321_AddedAbilityToGetCategoryRatings"; }
+            get { return "202009151445460_InitialBuild"; }
         }
         
         string IMigrationMetadata.Source

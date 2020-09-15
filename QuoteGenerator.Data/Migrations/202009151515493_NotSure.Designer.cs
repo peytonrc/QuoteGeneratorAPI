@@ -7,13 +7,13 @@ namespace QuoteGenerator.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class NotSure : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NotSure));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009112033320_Initial"; }
+            get { return "202009151515493_NotSure"; }
         }
         
         string IMigrationMetadata.Source
