@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202009151445460_InitialBuild.Designer.cs">
       <DependentUpon>202009151445460_InitialBuild.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009151515493_NotSure.cs" />
+    <Compile Include="Migrations\202009151515493_NotSure.Designer.cs">
+      <DependentUpon>202009151515493_NotSure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Quote.cs" />
@@ -103,6 +107,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009151445460_InitialBuild.resx">
       <DependentUpon>202009151445460_InitialBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009151515493_NotSure.resx">
+      <DependentUpon>202009151515493_NotSure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

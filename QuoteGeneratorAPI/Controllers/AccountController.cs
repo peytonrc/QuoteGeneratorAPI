@@ -341,7 +341,7 @@ namespace QuoteGeneratorAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName, FavoriteCategoroy = model.FavoriteCategory };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, YourName = model.YourName, FavoriteCategory = model.FavoriteCategory };
             
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
