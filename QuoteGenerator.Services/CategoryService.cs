@@ -18,20 +18,6 @@ namespace QuoteGenerator.Services
             _userId = userId;
         }
 
-
-
-        //public int GetNumberOfUserRatingsByCategoryId(List<UserRatingQuote> list)
-        //{
-        //    var userRatings = 0;
-        //    foreach (var UserRatingQuote.CategoryId in list)
-        //    {
-        //        userRatings = list.Count;
-        //    }
-        //    return userRatings;
-        //}
-
-        // foreach CategoryId in UserRatingQuote get UserRating.Count
-
         public int GetCategoryRatings()
         {
             using (var ctx = new ApplicationDbContext())
@@ -49,11 +35,6 @@ namespace QuoteGenerator.Services
             }
         }
 
-
-
-
-
-
         public List<UserRatingQuoteListItem> GetUserRatingQuotes()
         {
             using (var ctx = new ApplicationDbContext())
@@ -70,14 +51,6 @@ namespace QuoteGenerator.Services
                 return userRatingsQuery.ToList();
             }
         }
-
-
-
-
-
-
-
-
 
 
 

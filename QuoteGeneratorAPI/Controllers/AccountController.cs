@@ -69,7 +69,7 @@ namespace QuoteGeneratorAPI.Controllers
                     return new UserInfoViewModel()
                     {
                         YourName = user.YourName,
-                        FavoriteCategory = user.FavoriteCategoroy,
+                        FavoriteCategory = user.FavoriteCategory,
                         Email = user.Email,
                         HasRegistered = externalLogin == null,
                         LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
