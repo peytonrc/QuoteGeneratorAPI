@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static QuoteGeneratorAPI.Data.ApplicationUser;
 
 namespace QuoteGenerator.Models.QuoteModels
 {
@@ -30,7 +31,7 @@ namespace QuoteGenerator.Models.QuoteModels
         [Display(Name = "Date Spoken YYYY/MM/DD")]
         public DateTime DateSpoken { get; set; }
 
-        // Average Rating?
+       
   
     }
 }

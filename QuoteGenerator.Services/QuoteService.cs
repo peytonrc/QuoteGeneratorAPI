@@ -40,6 +40,7 @@ namespace QuoteGenerator.Services
                 return quoteQuery.ToArray();
             }
         }
+
         public bool CreateQuote(QuoteCreate model)
         {
             var entity = new Quote
@@ -100,7 +101,6 @@ namespace QuoteGenerator.Services
             }
         }
 
-
         public IEnumerable<QuoteListItem> GetQuotesByAuthorId(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -156,8 +156,6 @@ namespace QuoteGenerator.Services
             }
             return (list.Count > 0) ? Math.Round(avgRating / list.Count, 2) : 0;
         }
-
-       
 
         public bool UpdateQuote(QuoteEdit model)
         {
