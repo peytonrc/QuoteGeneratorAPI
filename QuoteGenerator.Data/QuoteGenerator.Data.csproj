@@ -87,13 +87,9 @@
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202009112033320_Initial.cs" />
-    <Compile Include="Migrations\202009112033320_Initial.Designer.cs">
-      <DependentUpon>202009112033320_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.cs" />
-    <Compile Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.Designer.cs">
-      <DependentUpon>202009141830321_AddedAbilityToGetCategoryRatings.cs</DependentUpon>
+    <Compile Include="Migrations\202009151445460_InitialBuild.cs" />
+    <Compile Include="Migrations\202009151445460_InitialBuild.Designer.cs">
+      <DependentUpon>202009151445460_InitialBuild.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,11 +101,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009112033320_Initial.resx">
-      <DependentUpon>202009112033320_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009141830321_AddedAbilityToGetCategoryRatings.resx">
-      <DependentUpon>202009141830321_AddedAbilityToGetCategoryRatings.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009151445460_InitialBuild.resx">
+      <DependentUpon>202009151445460_InitialBuild.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
