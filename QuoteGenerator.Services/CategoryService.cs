@@ -24,22 +24,46 @@ namespace QuoteGenerator.Services
             {
                 var userRatingsQuery =
                     ctx
-                        .UserRatingQuotes                     
+                        .UserRatingQuotes
                         .Select(e => new UserRatingQuoteListItem
                         {
                             //CategoryId = e.Quote.Category.CategoryId,
                             UserRating = e.UserRating,
-                        }) ;
+                        });
 
                 return userRatingsQuery.Count();
             }
         }
 
-        
+        public int GetBestCategory()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var catList = GetUserRatingQuotes();
+                var banana = catList.GroupBy(x => x.CategoryId)
+                    .OrderByDescending(x => x.Count())
+                    .First().Key;
+                return banana;
+            }
+        }
 
+        public List<UserRatingQuoteListItem> GetUserRatingQuotes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var userRatingsQuery =
+                    ctx
+                        .UserRatingQuotes
+                        .Select(e => new UserRatingQuoteListItem
+                        {
+                            //CategoryId = e.Quote.Category.CategoryId,
+                            UserRating = e.UserRating,
+                            CategoryId = e.Quote.CategoryId
+                        });
 
-
-
+                return userRatingsQuery.ToList();
+            }
+        }
 
 
         public IEnumerable<CategoryListItem> GetCategories()
