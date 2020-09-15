@@ -15,6 +15,8 @@ namespace QuoteGenerator.Models.UserRatingQuoteModels
         public string UserId { get; set; }
 
         public double UserRating { get; set; }
+
+        public int CategoryId { get; set; }
         
     }
 }

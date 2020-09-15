@@ -35,22 +35,10 @@ namespace QuoteGenerator.Services
             }
         }
 
-        public List<UserRatingQuoteListItem> GetUserRatingQuotes()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var userRatingsQuery =
-                    ctx
-                        .UserRatingQuotes
-                        .Select(e => new UserRatingQuoteListItem
-                        {
-                            //CategoryId = e.Quote.Category.CategoryId,
-                            UserRating = e.UserRating,
-                        });
+        
 
-                return userRatingsQuery.ToList();
-            }
-        }
+
+
 
 
 
