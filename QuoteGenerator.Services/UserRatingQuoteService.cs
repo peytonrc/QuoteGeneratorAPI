@@ -40,6 +40,7 @@ namespace QuoteGenerator.Services
                 return userRatingQuoteQuery.ToArray();
             }
         }
+
         public bool CreateUserRatingQuote(UserRatingQuoteCreate model)
         {
             var entity = new UserRatingQuote
