@@ -38,6 +38,15 @@ namespace QuoteGeneratorAPI.Controllers
             return Ok(category);
         }
 
+        [HttpGet]
+        [Route("Ratings")]
+        public IHttpActionResult GetBestCategoryByNumberOfRatings()
+        {
+            var service = CreateCategoryService();
+            var category = service.GetBestCategory();
+            return Ok(category);
+        }
+
         public IHttpActionResult Post(CategoryCreate category)
         {
             if (category == null)
