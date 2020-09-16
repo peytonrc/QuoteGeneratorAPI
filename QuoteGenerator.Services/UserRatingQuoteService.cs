@@ -34,6 +34,7 @@ namespace QuoteGenerator.Services
                             QuoteId = e.QuoteId,
                             UserId = e.UserId,
                             UserRating = e.UserRating,
+                            CategoryId = e.Quote.CategoryId
 
                         });
 
@@ -97,7 +98,7 @@ namespace QuoteGenerator.Services
                 var entity =
                     ctx
                         .UserRatingQuotes
-                        .SingleOrDefault(e => e.QuoteId == userRatingQuoteId);
+                        .SingleOrDefault(e => e.UserRatingQuoteId == userRatingQuoteId);
 
                 ctx.UserRatingQuotes.Remove(entity);
 
