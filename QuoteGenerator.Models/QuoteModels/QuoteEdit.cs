@@ -18,12 +18,6 @@ namespace QuoteGenerator.Models.QuoteModels
         [Display(Name = "Quote")]
         public string Content { get; set; }
 
-        [Display(Name = "Author")]
-        public int AuthorId { get; set; }
-
-        [Display(Name = "Category")]
-        public int CategoryId { get; set; }
-
         [Display(Name = "Date Spoken YYYY/MM/DD")]
         public DateTime DateSpoken { get; set; }
 

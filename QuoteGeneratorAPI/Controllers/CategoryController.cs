@@ -39,7 +39,7 @@ namespace QuoteGeneratorAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Ratings")]
+        [Route("GetBestCategory")]
         public IHttpActionResult GetBestCategoryByNumberOfRatings()
         {
             var service = CreateCategoryService();

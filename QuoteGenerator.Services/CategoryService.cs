@@ -18,7 +18,7 @@ namespace QuoteGenerator.Services
             _userId = userId;
         }
 
-        public int GetCategoryRatings()
+        public IEnumerable<UserRatingQuoteListItem> GetCategoryRatings()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -27,11 +27,14 @@ namespace QuoteGenerator.Services
                         .UserRatingQuotes                     
                         .Select(e => new UserRatingQuoteListItem
                         {
-                            //CategoryId = e.Quote.Category.CategoryId,
+                            UserRatingQuoteId = e.UserRatingQuoteId,
+                            QuoteId = e.QuoteId,
+                            UserId = e.UserId,
                             UserRating = e.UserRating,
+                            CategoryId = e.Quote.CategoryId,
                         }) ;
 
-                return userRatingsQuery.Count();
+                return userRatingsQuery.ToList();
             }
         }
                 
@@ -74,7 +77,6 @@ namespace QuoteGenerator.Services
                         .UserRatingQuotes
                         .Select(e => new UserRatingQuoteListItem
                         {
-                            //CategoryId = e.Quote.Category.CategoryId,
                             UserRating = e.UserRating,
                             CategoryId = e.Quote.CategoryId
                         });

@@ -13,9 +13,6 @@ namespace QuoteGenerator.Data
         public int AuthorId { get; set; }
 
         [Required]
-        public Guid CreatorId { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         [Required]
