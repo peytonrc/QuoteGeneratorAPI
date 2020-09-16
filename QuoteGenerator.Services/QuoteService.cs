@@ -18,7 +18,6 @@ namespace QuoteGenerator.Services
         {
             _userId = userId;
         }
-
         public IEnumerable<QuoteListItem> GetQuotes()
         {
             using (var ctx = new ApplicationDbContext())

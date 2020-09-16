@@ -16,10 +16,6 @@ namespace QuoteGenerator.Data
         public int QuoteId { get; set; }
 
         [Required]
-        public Guid OwnerId { get; set; }
-
-
-        [Required]
         [ForeignKey(nameof(Author))]
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }

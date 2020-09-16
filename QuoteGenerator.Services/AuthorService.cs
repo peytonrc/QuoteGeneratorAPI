@@ -30,7 +30,7 @@ namespace QuoteGenerator.Services
                             AuthorId = e.AuthorId,
                             Name = e.Name,
                             BirthDate = e.BirthDate
-                           
+
                         });
 
                 return authorQuery.ToArray();
@@ -42,7 +42,7 @@ namespace QuoteGenerator.Services
             {
                 Name = model.Name,
                 BirthDate = model.BirthDate,
-               
+
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -66,7 +66,7 @@ namespace QuoteGenerator.Services
                         AuthorId = entity.AuthorId,
                         Name = entity.Name,
                         BirthDate = entity.BirthDate
-                        
+
                     };
             }
         }
@@ -83,6 +83,7 @@ namespace QuoteGenerator.Services
 
                 entity.AuthorId = model.AuthorId;
                 entity.Name = model.Name;
+                entity.BirthDate = model.BirthDate;
 
                 return ctx.SaveChanges() == 1;
             }
