@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace QuoteGenerator.Services
 {
-    public class CategoryService
+   public class CategoryService
     {
         private readonly Guid _userId;
         public CategoryService(Guid userId)
@@ -18,20 +18,41 @@ namespace QuoteGenerator.Services
             _userId = userId;
         }
 
-        public int GetCategoryRatings()
+        public IEnumerable<UserRatingQuoteListItem> GetCategoryRatings()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var userRatingsQuery =
                     ctx
-                        .UserRatingQuotes
+                        .UserRatingQuotes                     
                         .Select(e => new UserRatingQuoteListItem
                         {
-                            //CategoryId = e.Quote.Category.CategoryId,
+                            UserRatingQuoteId = e.UserRatingQuoteId,
+                            QuoteId = e.QuoteId,
+                            UserId = e.UserId,
                             UserRating = e.UserRating,
+                            CategoryId = e.Quote.CategoryId,
+                        }) ;
+
+                return userRatingsQuery.ToList();
+            }
+        }
+                
+        public IEnumerable<CategoryListItem> GetCategories()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var categoryQuery =
+                    ctx
+                        .Categories
+                        .Select(e => new CategoryListItem
+                        {
+                            CategoryId = e.CategoryId,
+                            Name = e.Name,
+
                         });
 
-                return userRatingsQuery.Count();
+                return categoryQuery.ToArray();
             }
         }
 
@@ -56,7 +77,6 @@ namespace QuoteGenerator.Services
                         .UserRatingQuotes
                         .Select(e => new UserRatingQuoteListItem
                         {
-                            //CategoryId = e.Quote.Category.CategoryId,
                             UserRating = e.UserRating,
                             CategoryId = e.Quote.CategoryId
                         });
@@ -65,24 +85,6 @@ namespace QuoteGenerator.Services
             }
         }
 
-
-        public IEnumerable<CategoryListItem> GetCategories()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var categoryQuery =
-                    ctx
-                        .Categories
-                        .Select(e => new CategoryListItem
-                        {
-                            CategoryId = e.CategoryId,
-                            Name = e.Name,
-
-                        });
-
-                return categoryQuery.ToArray();
-            }
-        }
 
         public bool CreateCategory(CategoryCreate model)
         {
