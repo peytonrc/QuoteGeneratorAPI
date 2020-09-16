@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace QuoteGenerator.Services
 {
-    public class CategoryService
+   public class CategoryService
     {
         private readonly Guid _userId;
         public CategoryService(Guid userId)
